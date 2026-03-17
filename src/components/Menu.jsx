@@ -1,5 +1,7 @@
+import { useGSAP } from '@gsap/react';
 import { sliderLists } from '../data';
 import { useState, useRef } from 'react';
+import gsap from 'gsap';
 
 
 export const Menu = () => {
@@ -10,6 +12,15 @@ export const Menu = () => {
         const nextIndex = (index + total) % total;
         setCurrentIndex(nextIndex);
     }
+
+    useGSAP(() => {
+        gsap.fromTo( '#title', { opacity: 0 }, { opacity: 1, duration: 1 });
+        gsap.fromTo('.cocktail img', { opacity: 0, xPercent: -100 }, { opacity: 1, xPercent: 0, duration: 1, ease: 'power1.inOut' });
+        gsap.fromTo('.details h2', { opacity: 0, yPercent: 100 }, { opacity: 1, yPercent: 0, duration: 1, ease: 'power1.inOut', delay: 0.5 });
+        gsap.fromTo('.details p', { opacity: 0, yPercent: 100 }, { opacity: 1, yPercent: 0, duration: 1, ease: 'power1.inOut', delay: 0.7 });
+    }, [currentIndex]);
+
+
     return (
         <section id="menu" aria-labelledby="menu-heading">
             <img src='/images/slider-left-leaf.png' alt='left-leaf' id='m-left-leaf'/>
