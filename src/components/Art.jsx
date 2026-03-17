@@ -22,7 +22,7 @@ export const Art = () => {
             maskTimeline
             .to('.will-fade', {
                 opacity: 0,
-                stagger: 0.2,
+                stagger: 0.02,
                 ease: 'power1.out',
             })
             .to('.masked-img', {
