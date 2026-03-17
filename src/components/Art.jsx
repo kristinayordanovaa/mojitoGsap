@@ -8,12 +8,13 @@ export const Art = () => {
     const isMobile = useMediaQuery({ maxWidth: 768 });
     useGSAP (() => {
             const start = isMobile ? 'top 20%' : 'top top';
+            const end = isMobile ? '+=1600' : '+=2400';
 
             const maskTimeline = gsap.timeline({
                 scrollTrigger: {
                     trigger: '#art',
                     start,
-                    end: 'bottom center',
+                    end,
                     scrub: 1.5,
                     pin: true,
                 }
